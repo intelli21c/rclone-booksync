@@ -9,4 +9,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="genericbook.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="genericbook.ico" />
+  </ItemGroup>
+
 </Project>

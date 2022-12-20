@@ -1,0 +1,17 @@
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.exe
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.deps.json
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.runtimeconfig.json
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.dll
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.pdb
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.csproj.AssemblyReference.cache
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync_booksync.Form1.resources
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.csproj.GenerateResource.cache
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.AssemblyInfoInputs.cache
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.AssemblyInfo.cs
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.csproj.CoreCompileInputs.cache
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.dll
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\refint\rsync-booksync.dll
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.pdb
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.genruntimeconfig.cache
+C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\ref\rsync-booksync.dll

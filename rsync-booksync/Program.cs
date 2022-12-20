@@ -1,4 +1,4 @@
-namespace rsync_booksync
+namespace rclone_booksync
 {
     internal static class Program
     {

@@ -1,53 +1,57 @@
 using System.Diagnostics;
 using System.Linq.Expressions;
 
-namespace rsync_booksync
+namespace rclone_booksync
 {
     public partial class Form1 : Form
     {
-        Process rsync = null;
-        Thread rsyncwatch = null;
+        Process rclone = null;
+        Thread rclonewatch = null;
         string command = "";
-        void rsyncwatchf()
+        void rclonewatchf()
         {
-            rsync.Start();
-            label2.Text = "RClone is running";
-            while (!rsync.HasExited)
+            rclone.Start();
+            label2.Text = "RUNNING";
+            while (!rclone.HasExited)
             {
-                richTextBox1.Text += (char)rsync.StandardOutput.Read();
-                richTextBox1.Text += (char)rsync.StandardError.Read();
+                richTextBox1.Text += (char)rclone.StandardOutput.Read();
+                //richTextBox1.Text += (char)rsync.StandardError.Read();
+                //stderr reading seems to cause error
             }
-            rsync.Kill();
-            rsync.Dispose();
-            rsync = null;
+            rclone.Kill();
+            rclone.Dispose();
+            rclone = null;
             richTextBox1.Text += "\n";
-            label2.Text = "RClone not running";
-            rsyncwatch = null;
+            label2.Text = "IDLE";
+            rclonewatch = null;
         }
 
-        bool startrsync()
+        bool startrclone()
         {
-            if (rsyncwatch != null)
+            if (rclonewatch != null)
             {
-                if (MessageBox.Show("Previous instance seems to be running", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show("Previous instance seems to be running", "Notice", MessageBoxButtons.YesNo) == DialogResult.No)
                     return false;
-                rsync.Kill();
+                rclone.Kill(); //errs.
+                rclone.Dispose();
+                rclone = null;
+                Thread.Sleep(100);
             }
-            rsync = new Process();
+            rclone = new Process();
             if (!File.Exists(textBox2.Text))
             {
                 MessageBox.Show("Invalid rclone path provided", "Error", MessageBoxButtons.OK);
                 return false;
             }
-            rsync.StartInfo.FileName = textBox2.Text;
-            rsync.StartInfo.Arguments = command;
-            rsync.StartInfo.UseShellExecute = false;
-            rsync.StartInfo.RedirectStandardOutput = true;
-            rsync.StartInfo.RedirectStandardError = true;
-            rsync.StartInfo.CreateNoWindow = true;
+            rclone.StartInfo.FileName = textBox2.Text;
+            rclone.StartInfo.Arguments = command;
+            rclone.StartInfo.UseShellExecute = false;
+            rclone.StartInfo.RedirectStandardOutput = true;
+            rclone.StartInfo.RedirectStandardError = true;
+            rclone.StartInfo.CreateNoWindow = true;
 
-            rsyncwatch = new Thread(rsyncwatchf);
-            rsyncwatch.Start();
+            rclonewatch = new Thread(rclonewatchf);
+            rclonewatch.Start();
             return true;
         }
 
@@ -102,6 +106,8 @@ namespace rsync_booksync
                 return;
             }
             command = "copy " + textBox5.Text + " ";
+            if (!checkBox2.Checked)
+                command += "--config " + textBox1.Text + " ";
             if (checkBox1.Checked)
                 command += "--dry-run ";
             command += textBox3.Text + " ";
@@ -112,7 +118,7 @@ namespace rsync_booksync
             else
                 command += " \"" + textBox4.Text + "\"";
             richTextBox1.Text += ("\"" + textBox2.Text + "\" " + command + "\n");
-            startrsync();
+            startrclone();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -128,6 +134,8 @@ namespace rsync_booksync
                 return;
             }
             command = "copy " + textBox5.Text + " ";
+            if (!checkBox2.Checked)
+                command += "--config " + textBox1.Text + " ";
             if (checkBox1.Checked)
                 command += "--dry-run ";
             if (textBox4.Text.StartsWith('"') && textBox4.Text.EndsWith('"'))
@@ -138,16 +146,16 @@ namespace rsync_booksync
                 command += (" \"" + textBox4.Text + "\"");
             command += " " + textBox3.Text;
             richTextBox1.Text += ("\"" + textBox2.Text + "\" " + command + "\n");
-            startrsync();
+            startrclone();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (rsync != null)
+            if (rclone != null)
             {
-                rsync.Kill();
-                rsync.Dispose();
-                rsync = null;
+                rclone.Kill();
+                rclone.Dispose();
+                rclone = null;
             }
         }
 
@@ -158,8 +166,13 @@ namespace rsync_booksync
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (rsync != null)
-                rsync.Kill();
+            if (rclone != null)
+                rclone.Kill();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox1.Enabled = !checkBox2.Checked;
         }
     }
 }
