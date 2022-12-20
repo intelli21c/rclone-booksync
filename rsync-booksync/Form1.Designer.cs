@@ -44,6 +44,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -54,15 +57,16 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(12, 12);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(776, 355);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(444, 411);
+            this.textBox1.Location = new System.Drawing.Point(536, 411);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(278, 27);
+            this.textBox1.Size = new System.Drawing.Size(186, 27);
             this.textBox1.TabIndex = 1;
             // 
             // button1
@@ -78,7 +82,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(76, 410);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(284, 27);
+            this.textBox3.Size = new System.Drawing.Size(201, 27);
             this.textBox3.TabIndex = 4;
             // 
             // button3
@@ -89,6 +93,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "push";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -98,10 +103,13 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "pull";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(736, 378);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(52, 24);
@@ -111,12 +119,13 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(204, 373);
+            this.button5.Location = new System.Drawing.Point(204, 374);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(73, 29);
             this.button5.TabIndex = 9;
             this.button5.Text = "browse";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // textBox4
             // 
@@ -137,7 +146,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(366, 413);
+            this.label2.Location = new System.Drawing.Point(457, 414);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 20);
             this.label2.TabIndex = 12;
@@ -160,6 +169,7 @@
             this.button6.TabIndex = 14;
             this.button6.Text = "browse";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // textBox2
             // 
@@ -177,11 +187,30 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "rsync";
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(332, 411);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(120, 27);
+            this.textBox5.TabIndex = 17;
+            this.textBox5.Text = "-auzvhP";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(285, 413);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 20);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "flags";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button6);
@@ -197,8 +226,11 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.richTextBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Rsync Booksync";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +254,8 @@
         private Button button6;
         private TextBox textBox2;
         private Label label4;
+        private FolderBrowserDialog folderBrowserDialog1;
+        private TextBox textBox5;
+        private Label label5;
     }
 }
