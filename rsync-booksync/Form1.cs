@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Linq.Expressions;
 
 namespace rsync_booksync
 {
@@ -10,11 +11,18 @@ namespace rsync_booksync
         void rsyncwatchf()
         {
             rsync.Start();
+            label2.Text = "RClone is running";
             while (!rsync.HasExited)
             {
-                richTextBox1.Text += rsync.StandardOutput.Read();
-                richTextBox1.Text += rsync.StandardError.Read();
+                richTextBox1.Text += (char)rsync.StandardOutput.Read();
+                richTextBox1.Text += (char)rsync.StandardError.Read();
             }
+            rsync.Kill();
+            rsync.Dispose();
+            rsync = null;
+            richTextBox1.Text += "\n";
+            label2.Text = "RClone not running";
+            rsyncwatch = null;
         }
 
         bool startrsync()
@@ -23,43 +31,42 @@ namespace rsync_booksync
             {
                 if (MessageBox.Show("Previous instance seems to be running", "", MessageBoxButtons.YesNo) == DialogResult.No)
                     return false;
+                rsync.Kill();
             }
             rsync = new Process();
-            rsync.Exited += (object sender, EventArgs e) => { rsync = null; rsyncwatch = null; };
             if (!File.Exists(textBox2.Text))
             {
-                MessageBox.Show("Invalid rsync path provided", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Invalid rclone path provided", "Error", MessageBoxButtons.OK);
                 return false;
             }
             rsync.StartInfo.FileName = textBox2.Text;
-            //rsync.StartInfo.UseShellExecute = true;
+            rsync.StartInfo.Arguments = command;
             rsync.StartInfo.UseShellExecute = false;
             rsync.StartInfo.RedirectStandardOutput = true;
             rsync.StartInfo.RedirectStandardError = true;
-            //rsync.StartInfo.CreateNoWindow = true;
+            rsync.StartInfo.CreateNoWindow = true;
 
-            //rsyncwatch = new Thread(rsyncwatchf);
-            //rsyncwatch.Start();
-            //stdout redirection yet not working. remove if it works 
-
+            rsyncwatch = new Thread(rsyncwatchf);
+            rsyncwatch.Start();
             return true;
         }
 
         public Form1()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
 
             string bookdir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Books";
             string programdir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             if (Directory.Exists(bookdir))
                 textBox4.Text = bookdir;
-            if (Directory.Exists(programdir + "\\cwrsync"))
+            if (File.Exists(programdir + "\\rclone.exe"))
             {
-                textBox2.Text = programdir + "\\cwrsync\\bin\\rsync.exe";
+                textBox2.Text = programdir + "\\rclone.exe";
             }
-            else if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\cwrsync"))
+            else if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Programs\\rclone.exe"))
             {
-                textBox2.Text = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\cwrsync";
+                textBox2.Text = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Programs\\rclone.exe";
             }
         }
 
@@ -91,23 +98,19 @@ namespace rsync_booksync
             }
             if (textBox3.Text == "")
             {
-                MessageBox.Show("No remote path provided", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("No remote profile and path provided", "Error", MessageBoxButtons.OK);
                 return;
             }
-            if (textBox3.Text.EndsWith('/'))
-            {
-                MessageBox.Show("Remote path has trailing slash, and may result in undesired behaviour", "Notice", MessageBoxButtons.OK);
-            }
-            command = textBox5.Text + " ";
+            command = "copy " + textBox5.Text + " ";
             if (checkBox1.Checked)
                 command += "--dry-run ";
             command += textBox3.Text + " ";
             if (textBox4.Text.StartsWith('"') && textBox4.Text.EndsWith('"'))
-                command += new string(textBox4.Text.ToList().GetRange(0, textBox4.Text.LastIndexOf("\\") + 1).ToArray());
+                command += textBox4.Text;
             else if (textBox4.Text.Contains(' '))
-                command += (" \"" + (new string(textBox4.Text.ToList().GetRange(0, textBox4.Text.LastIndexOf("\\") + 1).ToArray())) + "\"");
+                command += " \"" + textBox4.Text + "\"";
             else
-                command += (" \"" + textBox4.Text + "\"");
+                command += " \"" + textBox4.Text + "\"";
             richTextBox1.Text += ("\"" + textBox2.Text + "\" " + command + "\n");
             startrsync();
         }
@@ -121,14 +124,10 @@ namespace rsync_booksync
             }
             if (textBox3.Text == "")
             {
-                MessageBox.Show("No remote path provided", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("No remote profile and path provided", "Error", MessageBoxButtons.OK);
                 return;
             }
-            if (textBox3.Text.EndsWith('/'))
-            {
-                MessageBox.Show("Remote path has trailing slash, and may result in undesired behaviour", "Notice", MessageBoxButtons.OK);
-            }
-            command = textBox5.Text + " ";
+            command = "copy " + textBox5.Text + " ";
             if (checkBox1.Checked)
                 command += "--dry-run ";
             if (textBox4.Text.StartsWith('"') && textBox4.Text.EndsWith('"'))
@@ -137,14 +136,30 @@ namespace rsync_booksync
                 command += (" \"" + textBox4.Text + "\"");
             else
                 command += (" \"" + textBox4.Text + "\"");
-            command += " " + new string(textBox3.Text.ToList().GetRange(0, textBox3.Text.LastIndexOf("/") + 1).ToArray());
+            command += " " + textBox3.Text;
             richTextBox1.Text += ("\"" + textBox2.Text + "\" " + command + "\n");
             startrsync();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (rsync != null) rsync.Dispose();
+            if (rsync != null)
+            {
+                rsync.Kill();
+                rsync.Dispose();
+                rsync = null;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (rsync != null)
+                rsync.Kill();
         }
     }
 }
