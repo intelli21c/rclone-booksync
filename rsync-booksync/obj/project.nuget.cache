@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "avHJzXJmMZvTWxVq2Rs25tqOqC75BhpekG+maJSzSzw8rUpADHS6A0Ils+wK/EOVQMfJw0AEq/igi8zt1mLlxg==",
+  "dgSpecHash": "xK60QUmvYY3RDOLdN4//VvnZS06FMnZuDeCFLofHvNflwwbazUmoYN57o0fTmpm5hcp62uVjYa1b7enL1qC6Gg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Jun Young Lee\\Sources\\rsync-booksync\\rsync-booksync\\rsync-booksync.csproj",
+  "projectFilePath": "C:\\Users\\JYLEE\\Sources\\rsync-booksync-front\\rsync-booksync\\rsync-booksync.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

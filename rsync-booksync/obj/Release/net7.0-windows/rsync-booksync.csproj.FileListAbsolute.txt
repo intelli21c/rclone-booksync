@@ -15,3 +15,21 @@ C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-
 C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.pdb
 C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.genruntimeconfig.cache
 C:\Users\Jun Young Lee\Sources\rsync-booksync\rsync-booksync\obj\Release\net7.0-windows\ref\rsync-booksync.dll
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.exe
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.deps.json
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.runtimeconfig.json
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.dll
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\bin\Release\net7.0-windows\rsync-booksync.pdb
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.csproj.AssemblyReference.cache
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.g.resources
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rclone_booksync.Form1.resources
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.csproj.GenerateResource.cache
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.AssemblyInfoInputs.cache
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.AssemblyInfo.cs
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.csproj.CoreCompileInputs.cache
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.dll
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\refint\rsync-booksync.dll
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.pdb
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\rsync-booksync.genruntimeconfig.cache
+C:\Users\JYLEE\Sources\rsync-booksync-front\rsync-booksync\obj\Release\net7.0-windows\ref\rsync-booksync.dll

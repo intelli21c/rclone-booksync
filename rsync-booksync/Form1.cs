@@ -62,15 +62,35 @@ namespace rclone_booksync
 
             string bookdir = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Books";
             string programdir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            if (Directory.Exists(bookdir))
-                textBox4.Text = bookdir;
             if (File.Exists(programdir + "\\rclone.exe"))
             {
                 textBox2.Text = programdir + "\\rclone.exe";
+                if (File.Exists(programdir + "\\rclone.confing"))
+                {
+                    checkBox2.Checked = false;
+                    textBox1.Enabled = true;
+                    textBox1.Text = programdir + "\\rclone.config";
+                }
             }
             else if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Programs\\rclone.exe"))
             {
                 textBox2.Text = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Programs\\rclone.exe";
+            }
+            if (Directory.Exists(bookdir))
+            {
+                textBox4.Text = bookdir;
+                if (File.Exists(bookdir + "\\rclone.config"))
+                {
+                    checkBox2.Checked = false;
+                    textBox1.Enabled = true;
+                    textBox1.Text = bookdir + "\\rclone.config";
+                }
+                if (File.Exists(bookdir + "\\.meta\\rclone.config"))
+                {
+                    checkBox2.Checked = false;
+                    textBox1.Enabled = true;
+                    textBox1.Text = bookdir + "\\.meta\\rclone.config";
+                }
             }
         }
 

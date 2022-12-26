@@ -12,9 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Jun Young Lee\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Jun Young Lee\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\JYLEE\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\JYLEE\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Reflection.Metadata.MetadataUpdater.IsSupported": false,
