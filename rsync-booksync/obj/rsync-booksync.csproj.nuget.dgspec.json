@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JYLEE\\Sources\\rsync-booksync-front\\rsync-booksync\\rsync-booksync.csproj": {}
+    "C:\\Users\\Jun Young Lee\\Sources\\rsync-booksync\\rsync-booksync\\rsync-booksync.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JYLEE\\Sources\\rsync-booksync-front\\rsync-booksync\\rsync-booksync.csproj": {
+    "C:\\Users\\Jun Young Lee\\Sources\\rsync-booksync\\rsync-booksync\\rsync-booksync.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JYLEE\\Sources\\rsync-booksync-front\\rsync-booksync\\rsync-booksync.csproj",
+        "projectUniqueName": "C:\\Users\\Jun Young Lee\\Sources\\rsync-booksync\\rsync-booksync\\rsync-booksync.csproj",
         "projectName": "rsync-booksync",
-        "projectPath": "C:\\Users\\JYLEE\\Sources\\rsync-booksync-front\\rsync-booksync\\rsync-booksync.csproj",
-        "packagesPath": "C:\\Users\\JYLEE\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JYLEE\\Sources\\rsync-booksync-front\\rsync-booksync\\obj\\",
+        "projectPath": "C:\\Users\\Jun Young Lee\\Sources\\rsync-booksync\\rsync-booksync\\rsync-booksync.csproj",
+        "packagesPath": "C:\\Users\\Jun Young Lee\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jun Young Lee\\Sources\\rsync-booksync\\rsync-booksync\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\JYLEE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jun Young Lee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
