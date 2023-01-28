@@ -203,5 +203,17 @@ namespace rclone_booksync
 				textBox3.Text = (remoteEntries[domainUpDown1.SelectedIndex].name + ":/home/" + remoteEntries[domainUpDown1.SelectedIndex].user + "/Books");
 			}
 		}
+
+		private void button7_Click(object sender, EventArgs e)
+		{
+			//TODO handel default case.
+			remoteEntries = ConfigParser.load(textBox1.Text);
+			domainUpDown1.Items.Clear();
+			for (int i = 0; i < remoteEntries.Count; i++)
+			{
+				domainUpDown1.Items.Add(remoteEntries[i].name);
+			}
+			domainUpDown1.SelectedIndex = 0;
+		}
 	}
 }

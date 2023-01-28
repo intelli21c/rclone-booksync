@@ -223,7 +223,7 @@
 			this.textBox1.Enabled = false;
 			this.textBox1.Location = new System.Drawing.Point(340, 406);
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(115, 27);
+			this.textBox1.Size = new System.Drawing.Size(104, 27);
 			this.textBox1.TabIndex = 22;
 			// 
 			// label6
@@ -259,12 +259,13 @@
 			// 
 			// button7
 			// 
-			this.button7.Location = new System.Drawing.Point(461, 404);
+			this.button7.Location = new System.Drawing.Point(450, 405);
 			this.button7.Name = "button7";
-			this.button7.Size = new System.Drawing.Size(66, 29);
+			this.button7.Size = new System.Drawing.Size(77, 29);
 			this.button7.TabIndex = 27;
-			this.button7.Text = "profile";
+			this.button7.Text = "load";
 			this.button7.UseVisualStyleBackColor = true;
+			this.button7.Click += new System.EventHandler(this.button7_Click);
 			// 
 			// button8
 			// 
