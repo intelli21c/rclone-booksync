@@ -178,7 +178,7 @@
 			this.textBox5.Name = "textBox5";
 			this.textBox5.Size = new System.Drawing.Size(56, 27);
 			this.textBox5.TabIndex = 17;
-			this.textBox5.Text = "-vP";
+			this.textBox5.Text = "-v";
 			// 
 			// label5
 			// 
@@ -191,7 +191,7 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(680, 405);
+			this.button1.Location = new System.Drawing.Point(667, 404);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(52, 29);
 			this.button1.TabIndex = 19;
@@ -202,7 +202,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(738, 409);
+			this.label2.Location = new System.Drawing.Point(725, 409);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(39, 20);
 			this.label2.TabIndex = 20;
@@ -210,7 +210,7 @@
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(632, 405);
+			this.button2.Location = new System.Drawing.Point(618, 405);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(43, 29);
 			this.button2.TabIndex = 21;

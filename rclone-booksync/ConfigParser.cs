@@ -6,6 +6,7 @@
 		{
 			public string name;
 			public string user;
+			public string host;
 
 			public RemoteEntry()
 			{ }
@@ -22,8 +23,15 @@
 				string word = text[i].Substring(0, (text[i][p - 1] == ' ') ? (p - 1) : p);
 				string rest = text[i].Substring((text[i][p + 1] == ' ') ? (p + 2) : (p + 1),
 					(text[i][p + 1] == ' ') ? (text[i].Length - p - 2) : (text[i].Length - p - 1));
+				if (word == "type")
+				{
+					if (rest != "sftp")
+						return null;
+				}
 				if (word == "user")
 					remoteEntry.user = rest;
+				if (word == "host")
+					remoteEntry.host = rest;
 			}
 			return remoteEntry;
 		}
@@ -38,11 +46,14 @@
 					entryindex.Add(i);
 				}
 			}
+			RemoteEntry c;
 			for (int i = 0; i < entryindex.Count - 1; i++)
 			{
-				remoteEntries.Add(parseentry(text, entryindex[i], entryindex[i + 1] - 1));
+				c = parseentry(text, entryindex[i], entryindex[i + 1] - 1);
+				if (c != null) remoteEntries.Add(c);
 			}
-			remoteEntries.Add(parseentry(text, entryindex[entryindex.Count - 1], text.Length));
+			c = parseentry(text, entryindex[entryindex.Count - 1], text.Length);
+			if (c != null) remoteEntries.Add(c);
 			return remoteEntries;
 		}
 

@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Linq.Expressions;
 
@@ -13,18 +14,27 @@ namespace rclone_booksync
 		{
 			rclone.Start();
 			label2.Text = "RUNNING";
-			while (!rclone.HasExited)
+			richTextBox1.Text += rclone.StandardError.ReadToEnd(); //synchronous workaround, not good.
+			while (!rclone.HasExited) ;
+			//MessageBox.Show(rclone.StandardOutput.ReadToEnd());
+			/*while (!rclone.HasExited)
 			{
-				richTextBox1.Text += (char)rclone.StandardOutput.Read();
-				//richTextBox1.Text += (char)rsync.StandardError.Read();
+				//richTextBox1.Text += rclone.StandardOutput.Read();
+				richTextBox1.Text += (char)rclone.StandardError.Read();
 				//stderr reading seems to cause error
-			}
+			}*/
 			rclone.Kill();
 			rclone.Dispose();
 			rclone = null;
 			richTextBox1.Text += "\n";
 			label2.Text = "IDLE";
 			rclonewatch = null;
+		}
+
+		void OutputHandler(object sendingProcess, DataReceivedEventArgs outLine)
+		{
+			//https://stackoverflow.com/questions/4291912/process-start-how-to-get-the-output
+			//Console.WriteLine(outLine.Data);
 		}
 
 		bool startrclone()
@@ -50,6 +60,9 @@ namespace rclone_booksync
 			rclone.StartInfo.RedirectStandardOutput = true;
 			rclone.StartInfo.RedirectStandardError = true;
 			rclone.StartInfo.CreateNoWindow = true;
+
+			//rclone.OutputDataReceived += new DataReceivedEventHandler(OutputHandler);
+			//rclone.ErrorDataReceived += new DataReceivedEventHandler(OutputHandler);
 
 			rclonewatch = new Thread(rclonewatchf);
 			rclonewatch.Start();
@@ -192,7 +205,7 @@ namespace rclone_booksync
 		{
 			if (checkBox3.Checked)
 			{
-				textBox3.Text = (remoteEntries[domainUpDown1.SelectedIndex].name + ":/home/" + remoteEntries[domainUpDown1.SelectedIndex].user + "/Books");
+				textBox3.Text = (remoteEntries[domainUpDown1.SelectedIndex].name + ":Books");
 			}
 		}
 
@@ -200,13 +213,22 @@ namespace rclone_booksync
 		{
 			if (checkBox3.Checked)
 			{
-				textBox3.Text = (remoteEntries[domainUpDown1.SelectedIndex].name + ":/home/" + remoteEntries[domainUpDown1.SelectedIndex].user + "/Books");
+				textBox3.Text = (remoteEntries[domainUpDown1.SelectedIndex].name + ":Books");
 			}
 		}
 
 		private void button7_Click(object sender, EventArgs e)
 		{
 			//TODO handel default case.
+			//maybe reinitalisation need be done every time other place too...
+			openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
+				(Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Books") ? "\\Books\\.meta" : "");
+			openFileDialog1.FileName = "rclone.config";
+			if (openFileDialog1.ShowDialog() == DialogResult.OK)
+			{
+				textBox1.Text = openFileDialog1.FileName;
+			}
+
 			remoteEntries = ConfigParser.load(textBox1.Text);
 			domainUpDown1.Items.Clear();
 			for (int i = 0; i < remoteEntries.Count; i++)
